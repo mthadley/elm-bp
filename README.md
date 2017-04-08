@@ -11,6 +11,6 @@ You can then use `make` to test and build the project:
 
 ```shell
 $ make test
-$ make build
+$ make
 $ open dist/index.html
 ```

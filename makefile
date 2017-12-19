@@ -1,7 +1,7 @@
 DIST=dist
 MAIN=$(DIST)/index.js
 
-all: elm css html
+all: elm $(DIST)/index.html $(DIST)/index.css
 
 clean:
 	@rm -fr $(DIST)
@@ -9,10 +9,10 @@ clean:
 elm:
 	elm-make src/Main.elm --warn --output $(MAIN)
 
-css:
+$(DIST)/index.css: src/Styles/*.elm
 	elm-css src/Styles.elm --output $(DIST) --module Styles
 
-html: src/index.html
+$(DIST)/index.html: src/index.html
 	@cp src/index.html $(DIST)
 
 test:

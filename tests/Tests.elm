@@ -1,16 +1,13 @@
 module Tests exposing (..)
 
-import App
+import Expect exposing (Expectation)
+import Fuzz exposing (Fuzzer, int, list, string)
 import Test exposing (..)
-import Expect
 
 
-all : Test
-all =
-    describe "MyApp"
-        [ describe "Unit test examples"
-            [ test "Addition" <|
-                \() ->
-                    Expect.equal (3 + 7) 10
-            ]
+suite : Test
+suite =
+    describe "My App"
+        [ test "Should pass" <|
+            \_ -> Expect.equal (2 + 2) 4
         ]

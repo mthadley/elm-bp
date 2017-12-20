@@ -1,7 +1,9 @@
 module App exposing (Model, Msg, init, update, view, subscriptions)
 
-import Html exposing (..)
-import Styles.App as Styles
+import Html.Styled exposing (..)
+import Html.Styled.Attributes exposing (css)
+import Css exposing (..)
+import Theme exposing (theme)
 
 
 -- MODEL
@@ -21,14 +23,19 @@ init =
 -- VIEW
 
 
-{ class } =
-    Styles.namespace
-
-
 view : Model -> Html Msg
 view model =
-    main_ [ class [ Styles.Greeting ] ]
-        [ text model.greeting ]
+    main_
+        [ css
+            [ backgroundColor theme.secondary
+            , color theme.primary
+            ]
+        ]
+        [ span
+            [ css [ color theme.accent ]
+            ]
+            [ text model.greeting ]
+        ]
 
 
 

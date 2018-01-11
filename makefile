@@ -1,5 +1,5 @@
 OUT = dist
-ELM_MAIN = $(OUT)/elm.js
+ELM_MAIN = $(OUT)/index.js
 ELM_FILES = $(shell find src -iname "*.elm")
 
 all: $(ELM_MAIN) $(OUT)/index.html

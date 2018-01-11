@@ -1,16 +1,23 @@
-DIST=dist
-MAIN=$(DIST)/index.js
+OUT = dist
+ELM_MAIN = $(OUT)/elm.js
+ELM_FILES = $(shell find src -iname "*.elm")
 
-all: elm $(DIST)/index.html
+all: $(ELM_MAIN) $(OUT)/index.html
 
 clean:
-	@rm -fr $(DIST)
+	@rm -fr $(OUT) elm-stuff tests/elm-stuff
 
-elm:
-	elm-make src/Main.elm --warn --output $(MAIN)
+$(ELM_MAIN): $(ELM_FILES)
+	elm-make --yes src/Main.elm --warn --output $(ELM_MAIN)
 
-$(DIST)/index.html: src/index.html
-	@cp src/index.html $(DIST)
+$(OUT)/index.html: src/index.html
+	@cp src/index.html $(OUT)
 
 test:
 	@elm-test
+
+watch:
+	@find src | entr make
+
+format:
+	@elm-format --yes src/ tests/

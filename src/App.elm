@@ -1,9 +1,10 @@
-module App exposing (Model, Msg, init, update, view, subscriptions)
+module App exposing (Model, Msg, init, subscriptions, update, view)
 
+import Css exposing (..)
 import Html.Styled exposing (..)
 import Html.Styled.Attributes exposing (css)
-import Css exposing (..)
 import Theme exposing (theme)
+
 
 
 -- MODEL
@@ -14,9 +15,9 @@ type alias Model =
     }
 
 
-init : ( Model, Cmd Msg )
-init =
-    Model "Hello World" ! []
+init : () -> ( Model, Cmd Msg )
+init () =
+    ( Model "Hello World", Cmd.none )
 
 
 
@@ -50,7 +51,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Noop ->
-            model ! []
+            ( model, Cmd.none )
 
 
 

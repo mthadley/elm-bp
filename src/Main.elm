@@ -1,13 +1,14 @@
-module Main exposing (..)
+module Main exposing (main)
 
 import App exposing (Model, Msg, init, subscriptions, update, view)
+import Browser
 import Html
 import Html.Styled exposing (toUnstyled)
 
 
-main : Program Never Model Msg
+main : Program () Model Msg
 main =
-    Html.program
+    Browser.element
         { init = init
         , view = toUnstyled << view
         , update = update

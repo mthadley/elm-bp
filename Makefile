@@ -2,24 +2,30 @@ OUT = dist
 ELM_MAIN = $(OUT)/index.js
 ELM_FILES = $(shell find src -iname "*.elm")
 
-.PHONY: all clean test watch format
-
+.PHONY: all
 all: $(ELM_MAIN) $(OUT)/index.html
 
-clean:
-	@rm -fr $(OUT) elm-stuff tests/elm-stuff
-
-$(ELM_MAIN): $(ELM_FILES)
-	yes | elm make src/Main.elm --output $@
+$(ELM_MAIN): $(ELM_FILES) node_modules
+	yes | npx elm make src/Main.elm --output $@
 
 $(OUT)/index.html: src/index.html
 	@cp $< $@
 
-test:
-	@elm-test
+node_modules: package.json package-lock.json
+	npm install
 
+.PHONY: test
+test: node_modules
+	@npx elm-test
+
+.PHONY: watch
 watch:
 	@find src | entr make
 
-format:
-	@elm-format --yes src/ tests/
+.PHONY: format
+format: node_modules
+	@npx elm-format --yes src/ tests/
+
+.PHONY: clean
+clean:
+	@rm -fr $(OUT) elm-stuff tests/elm-stuff node_modules

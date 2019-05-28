@@ -25,6 +25,7 @@ $(OUT)/index.html: src/index.html
 
 node_modules: package.json package-lock.json
 	npm install
+	touch $@
 
 .PHONY: test
 test: node_modules
@@ -40,4 +41,4 @@ format: node_modules
 
 .PHONY: clean
 clean:
-	@rm -fr $(OUT) elm-stuff tests/elm-stuff node_modules
+	@rm -fr $(OUT) elm-stuff tests/elm-stuff node_modules dist

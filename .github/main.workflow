@@ -6,4 +6,7 @@ workflow "CI" {
 action "Build and Test" {
   uses = "docker://node:10"
   runs = "make all test"
+  env = {
+    ENVIRONMENT = "production"
+  }
 }

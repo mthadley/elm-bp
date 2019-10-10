@@ -11,6 +11,7 @@ stdenv.mkDerivation {
     nodejs
     elmPackages.elm
     elmPackages.elm-format
+    elmPackages.elm-test
     entr
   ];
 }

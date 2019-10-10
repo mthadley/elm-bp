@@ -13,7 +13,7 @@ CFLAGS = --debug
 endif
 
 $(ELM_MAIN): $(ELM_FILES) node_modules
-	yes | npx elm make src/Main.elm $(CFLAGS) --output $@
+	yes | elm make src/Main.elm $(CFLAGS) --output $@
 ifeq ($(ENVIRONMENT), production)
 	npx terser --mangle \
 		--compress "pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9]" \
@@ -33,11 +33,11 @@ test: node_modules
 
 .PHONY: watch
 watch:
-	@find src | entr make
+	@find src | entr -c make
 
 .PHONY: format
 format: node_modules
-	@npx elm-format --yes src/ tests/
+	@elm-format --yes src/ tests/
 
 .PHONY: clean
 clean:

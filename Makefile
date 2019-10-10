@@ -20,7 +20,7 @@ ifeq ($(ENVIRONMENT), production)
 		-o $@ -- $@
 endif
 
-$(OUT)/index.html: src/index.html
+$(OUT)/%: src/%
 	@cp $< $@
 
 node_modules: package.json package-lock.json

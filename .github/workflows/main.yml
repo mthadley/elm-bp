@@ -7,6 +7,6 @@ jobs:
     container: nixos/nix
     steps:
     - uses: actions/checkout@master
-    - run: nix-shell --run "make all test"
+    - run: nix-shell --pure --run "make all test"
       env:
         ENVIRONMENT: production

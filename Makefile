@@ -28,7 +28,7 @@ node_modules: package.json package-lock.json
 	touch $@
 
 .PHONY: test
-test: node_modules
+test:
 	@elm-test
 
 .PHONY: watch
@@ -36,7 +36,7 @@ watch:
 	@find src | entr -c make
 
 .PHONY: format
-format: node_modules
+format:
 	@elm-format --yes src/ tests/
 
 .PHONY: clean

@@ -29,7 +29,7 @@ node_modules: package.json package-lock.json
 
 .PHONY: test
 test: node_modules
-	@npx elm-test
+	@elm-test
 
 .PHONY: watch
 watch:

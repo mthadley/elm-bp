@@ -41,4 +41,4 @@ format: node_modules
 
 .PHONY: clean
 clean:
-	@rm -fr $(OUT) elm-stuff node_modules
+	@rm -fr $(OUT) elm-stuff node_modules result

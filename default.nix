@@ -10,13 +10,10 @@ stdenv.mkDerivation {
     elmPackages.elm-test
   ];
   src = ./.;
-  preBuild = "make clean";
-
-  # Set HOME to make the elm compiler happy
-  buildPhase = ''
-    export HOME=$TMP
-    make ENVIRONMENT=production OUT="dist"
+  preBuild = ''
+    export HOME=$TMP # Make elm happy
+    make clean
   '';
-
+  makeFlags = [ "ENVIRONMENT=production" ];
   installPhase = "cp -r dist $out";
 }

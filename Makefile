@@ -28,17 +28,17 @@ node_modules: package.json package-lock.json
 	touch $@
 
 .PHONY: test
-test: node_modules
-	@npx elm-test
+test:
+	@elm-test
 
 .PHONY: watch
 watch:
 	@find src | entr -c make
 
 .PHONY: format
-format: node_modules
+format:
 	@elm-format --yes src/ tests/
 
 .PHONY: clean
 clean:
-	@rm -fr $(OUT) elm-stuff node_modules
+	@rm -fr $(OUT) elm-stuff node_modules result

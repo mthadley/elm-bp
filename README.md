@@ -1,6 +1,7 @@
-# Elm Boilerplate
+# Elm Boilerplate ![ci status](https://github.com/mthadley/elm-bp/workflows/CI/badge.svg?branch=master)
 
-My own minimal boiler plate for small [Elm](http://elm-lang.org) projects.
+My own minimal boiler plate for small [Elm](http://elm-lang.org) projects. Clone
+the repo or click "Use this template" in Github to get started.
 
 # Setup
 

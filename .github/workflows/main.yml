@@ -10,7 +10,7 @@ jobs:
     - name: Cache nix store
       uses: actions/cache@v1
       with:
-        path: $NIX_STORE
+        path: ${{ env.NIX_STORE }}
         key: ${{ runner.os }}-nix
     - run: nix-shell --pure --run "make all test"
       env:

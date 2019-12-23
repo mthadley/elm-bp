@@ -4,7 +4,7 @@ jobs:
   build_and_test:
     name: Build and Test
     runs-on: ubuntu-latest
-    container: nixos/nix@2.3
+    container: nixos/nix:2.3
     steps:
     - uses: actions/checkout@v2
     - run: nix-shell --pure --run "make all test"

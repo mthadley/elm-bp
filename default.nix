@@ -1,8 +1,9 @@
-with import ./nix/packages.nix;
-
-stdenv.mkDerivation {
+let
+  pkgs = import ./nix/packages.nix;
+in
+pkgs.stdenv.mkDerivation {
   name = "elm-bp";
-  buildInputs = [
+  buildInputs = with pkgs; [
     gnumake
     nodejs
     elmPackages.elm

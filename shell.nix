@@ -3,5 +3,8 @@ let
 in
 pkgs.mkShell {
   inputsFrom = [ (import ./default.nix) ];
-  buildInputs = [ pkgs.entr ];
+
+  buildInputs = with pkgs; [
+    entr
+  ];
 }
